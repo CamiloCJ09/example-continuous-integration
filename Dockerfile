@@ -1,14 +1,7 @@
-FROM node
-LABEL authors="Camilo CJ"
-RUN apt-get update && apt-get install -y \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
-WORKDIR /app
-
+FROM node:18
+WORKDIR /usr/src/app
+COPY package*.json ./
+RUN npm install
 COPY . .
-RUN npm install -g npm-check-updates \
-    npm install \
-    
-COPY . /app
-EXPOSE 3000
-CMD [ "babel-node", "app.js" ]
+EXPOSE 8080
+CMD [ "node", "server.js" ]
