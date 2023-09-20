@@ -7,9 +7,7 @@ WORKDIR /app
 
 COPY . .
 RUN npm install -g npm-check-updates \
-    ncu -u \
     npm install \
-    npm install express \
   
 RUN npm ci --only=production
 COPY . /app
