@@ -8,8 +8,7 @@ WORKDIR /app
 COPY . .
 RUN npm install -g npm-check-updates \
     npm install \
-  
-RUN npm ci --only=production
+    
 COPY . /app
 EXPOSE 3000
 CMD [ "babel-node", "app.js" ]
